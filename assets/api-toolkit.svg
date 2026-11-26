@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0e1a3d"/><stop offset="1" stop-color="#1b4a6d"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#778fff"/><stop offset="1" stop-color="#44d5c0"/></linearGradient></defs>
+<rect width="640" height="360" rx="24" fill="url(#bg)"/><circle cx="490" cy="80" r="130" fill="#4a8cff" opacity=".14"/>
+<rect x="40" y="65" width="255" height="230" rx="16" fill="#0b142a" stroke="#5577c9" stroke-width="2"/><rect x="40" y="65" width="255" height="38" rx="16" fill="#263d6b"/><circle cx="61" cy="84" r="5" fill="#ff8b90"/><circle cx="79" cy="84" r="5" fill="#ffc45b"/><circle cx="97" cy="84" r="5" fill="#4bd4bc"/>
+<rect x="63" y="125" width="60" height="18" rx="6" fill="#204b78"/><text x="74" y="138" fill="#8ce6db" font-family="monospace" font-size="10" font-weight="bold">GET</text><rect x="135" y="130" width="128" height="7" rx="3.5" fill="#8fa8f8"/>
+<rect x="63" y="163" width="18" height="7" rx="3" fill="#53d4c1"/><rect x="91" y="163" width="118" height="7" rx="3" fill="#5f80ca"/><rect x="91" y="181" width="158" height="7" rx="3" fill="#405b91"/><rect x="91" y="199" width="139" height="7" rx="3" fill="#405b91"/>
+<rect x="63" y="230" width="60" height="18" rx="6" fill="#314a85"/><text x="73" y="243" fill="#c7d3ff" font-family="monospace" font-size="10" font-weight="bold">JSON</text><rect x="135" y="235" width="127" height="7" rx="3.5" fill="#6d8be4"/>
+<path d="M300 180h53m-15-13 15 13-15 13" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M432 77l78 42v88l-78 43-78-43v-88z" fill="#1b3768" stroke="url(#g)" stroke-width="4"/><circle cx="432" cy="162" r="15" fill="#44d5c0"/><circle cx="384" cy="124" r="10" fill="#8ea4ff"/><circle cx="480" cy="124" r="10" fill="#8ea4ff"/><circle cx="384" cy="199" r="10" fill="#8ea4ff"/><circle cx="480" cy="199" r="10" fill="#8ea4ff"/><path d="M395 132l25 22m24 0 25-22m-69 61 45-25m21 25-45-25" stroke="#8ca4ff" stroke-width="3" opacity=".85"/>
+<rect x="526" y="137" width="76" height="54" rx="12" fill="#1d3a63" stroke="#56caba"/><path d="M544 153h39m-39 12h28" stroke="#b6c8ff" stroke-width="5" stroke-linecap="round"/><path d="M511 163h10" stroke="#44d5c0" stroke-width="4"/>
+<text x="354" y="290" fill="#c9d8ff" font-family="Arial,sans-serif" font-size="13" font-weight="bold">API CONTRACT · EXAMPLES · GUIDES</text>
+</svg>
