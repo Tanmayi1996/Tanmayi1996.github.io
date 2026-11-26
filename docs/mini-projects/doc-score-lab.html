@@ -37,7 +37,15 @@ header{background:#fff;border-bottom:1px solid #e2e8f1;padding:16px 0}header .wr
 <tr><td>Plain text (<code>.txt</code>)</td><td>Checks text length, sentence patterns, and words. It cannot infer rich document structure unless it is represented in the text.</td></tr>
 <tr><td>HTML (<code>.html</code>, <code>.htm</code>)</td><td>Reads the document title, headings, links, image alt attributes, lists, tables, and code elements from the parsed page.</td></tr>
 </tbody></table>
-<p>The maximum file size is 3 MB per file. You can select multiple files to compare a set of documents.</p>
+<p>The maximum file size is 3 MB per file. You can select multiple files to compare a set of documents. You can also fetch one public page by URL when its server allows browser CORS access.</p>
+<h2 id="url-audit">Audit one public documentation page by URL</h2>
+<ol>
+<li>Open <a href="/doc-score/">DocScore Lab</a> and select <b>Fetch URL</b>.</li>
+<li>Enter the public HTTP or HTTPS URL for the documentation page.</li>
+<li>Select <b>Fetch page</b>. The tool requests the page directly from your browser.</li>
+<li>When the page loads, select <b>Analyze documentation</b>.</li>
+</ol>
+<p>The target site must allow cross-origin browser requests (CORS). Some documentation platforms block this by default. If the fetch fails, save the page as HTML or copy its content and use the upload or paste option. URL mode fetches one page only; it does not crawl a documentation site or follow links.</p>
 <h2 id="portfolio-audit">Audit the portfolio samples</h2>
 <ol>
 <li>Open <a href="/doc-score/">DocScore Lab</a>.</li>
