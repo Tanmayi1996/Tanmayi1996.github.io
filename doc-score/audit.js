@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ["Clarity & readability",15],["Links & references",15],["Machine readability",10]
   ];
   var chosenFiles = [];
+  var fetchedDocument = null;
   var report = "";
 
   function esc(value) {
@@ -170,6 +171,26 @@ document.addEventListener("DOMContentLoaded", function () {
     chosenFiles=Array.from(event.target.files);
     $("filenames").textContent=chosenFiles.map(function (file) { return file.name; }).join(" · ")||"No files selected.";
   });
+  $("fetch").addEventListener("click",async function () {
+    $("urlstatus").textContent="Fetching the page in your browser...";
+    $("urlstatus").classList.remove("error");
+    fetchedDocument=null;
+    try {
+      var address=new URL($("urlinput").value.trim());
+      if(address.protocol!=="http:"&&address.protocol!=="https:")throw new Error("Enter an HTTP or HTTPS URL.");
+      var response=await fetch(address.href,{mode:"cors",credentials:"omit"});
+      if(!response.ok)throw new Error("The website returned HTTP "+response.status+".");
+      var contentType=response.headers.get("content-type")||"";
+      if(!/(text\/html|text\/plain|application\/xhtml\+xml)/i.test(contentType))throw new Error("The URL must return HTML or plain text.");
+      var content=await response.text();
+      fetchedDocument=parseDoc(content,address.hostname+address.pathname);
+      $("urlstatus").textContent="Page loaded. Select Analyze documentation to run the audit.";
+    } catch(error) {
+      $("urlstatus").textContent=error instanceof TypeError?"The website blocked browser access (often a CORS restriction). Paste or upload the content instead.":error.message;
+      $("urlstatus").classList.add("error");
+    }
+  });
+
   $("portfolio").addEventListener("click",async function () {
     var button=$("portfolio");button.disabled=true;$("status").textContent="Loading portfolio documentation...";$("status").classList.remove("error");
     try {
@@ -191,13 +212,16 @@ document.addEventListener("DOMContentLoaded", function () {
         var text=$("doctext").value.trim();
         if (!text) throw new Error("Paste documentation content first.");
         docs.push(parseDoc(text,$("docname").value.trim()||"Pasted document"));
-      } else {
+      } else if (mode==="files") {
         if (!chosenFiles.length) throw new Error("Select one or more files first.");
         for (var i=0;i<chosenFiles.length;i++) {
           var file=chosenFiles[i];
           if (file.size>3145728) throw new Error(file.name+" exceeds the 3 MB file limit.");
           docs.push(parseDoc(await file.text(),file.name));
         }
+      } else {
+        if (!fetchedDocument) throw new Error("Fetch a public URL before running the audit.");
+        docs.push(fetchedDocument);
       }
       render(docs);$("status").textContent="Analysis complete. Review the suggestions and check-by-check results.";
     } catch (error) {
@@ -210,8 +234,8 @@ document.addEventListener("DOMContentLoaded", function () {
     catch (error) { $("status").textContent="Clipboard access is unavailable in this browser.";$("status").classList.add("error"); }
   });
   $("reset").addEventListener("click",function () {
-    chosenFiles=[];report="";$("doctext").value="";$("docname").value="My documentation sample";
-    $("upload").value="";$("filenames").textContent="No files selected.";
+    chosenFiles=[];fetchedDocument=null;report="";$("doctext").value="";$("docname").value="My documentation sample";
+    $("upload").value="";$("filenames").textContent="No files selected.";$("urlinput").value="";$("urlstatus").textContent="";
     $("status").textContent="Inputs cleared.";$("status").classList.remove("error");$("results").classList.remove("show");
     document.querySelector('.tab[data-mode="paste"]').click();
   });
