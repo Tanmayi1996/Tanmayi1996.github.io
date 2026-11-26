@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="User guide and scoring rubric for DocScore Lab, a browser-based documentation quality audit tool.">
+<meta name="theme-color" content="#101827"><link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>DocScore Lab user guide | Tanmayi R S</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#182238;font:16px/1.72 system-ui,sans-serif}a{color:#526de5;text-decoration:none}.wrap{width:min(1100px,calc(100% - 34px));margin:auto}
+header{background:#fff;border-bottom:1px solid #e2e8f1;padding:16px 0}header .wrap{display:flex;justify-content:space-between;gap:12px}.hero{background:radial-gradient(circle at 85% 12%,#334a7e,transparent 30%),#101827;color:white;padding:38px 0}.hero small{color:#b9c7ff;letter-spacing:.14em;font-weight:900;text-transform:uppercase}.hero h1{font:800 clamp(2rem,4vw,3rem)/1.15 system-ui;margin:10px 0}.hero p{color:#c8d1e0;max-width:760px}.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;margin:28px auto 60px}.side,.article{background:white;border:1px solid #e2e8f1;border-radius:15px;padding:19px}.side{align-self:start;position:sticky;top:16px}.side b{display:block;font-size:.7rem;letter-spacing:.12em;color:#8792a5;margin:10px 0 4px}.side a{display:block;padding:6px 7px;font-size:.82rem;color:#57657d}.article h2{font-size:1.35rem;line-height:1.25;margin:30px 0 10px}.article h2:first-child{margin-top:0}.article h3{font-size:1.05rem;margin:22px 0 7px}.article p,.article li{color:#47546a}.article ul,.article ol{padding-left:24px}.article li{margin:6px 0}.article table{border-collapse:collapse;width:100%;font-size:.88rem;margin:12px 0 20px}.article th,.article td{border:1px solid #e2e8f1;text-align:left;vertical-align:top;padding:9px}.article th{background:#f0f3fa}.article code{background:#eef2f9;border-radius:4px;padding:2px 5px}.note{background:#eff9f6;border-left:3px solid #49d3bd;border-radius:0 10px 10px 0;padding:13px 15px;color:#3d625b}.article-footer{border-top:1px solid #e2e8f1;margin-top:26px;padding-top:16px;display:flex;gap:15px;flex-wrap:wrap;font-weight:800;font-size:.85rem}footer{background:#0b1220;color:#9aa8bc;padding:20px 0;font-size:.8rem}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.side{position:static;display:flex;flex-wrap:wrap;gap:8px}.side b{width:100%}}@media(max-width:500px){.article,.side{padding:15px}.article table{font-size:.78rem}.article th,.article td{padding:7px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="/" style="font-weight:900;color:#182238">TANMAYI. / DOCS</a><a href="/doc-score/">Open DocScore Lab ↗</a></div></header>
+<section class="hero"><div class="wrap"><small>Interactive mini project · User guide</small><h1>DocScore Lab</h1><p>Review documentation against a transparent set of content-quality checks. The tool reports an overall score, category scores, document-level results, and suggestions for revision.</p></div></section>
+<div class="wrap layout">
+<aside class="side"><b>DOCSCORE LAB</b><a href="#overview">Overview</a><a href="#run-audit">Run an audit</a><a href="#portfolio-audit">Audit portfolio samples</a><a href="#score">Understand the score</a><a href="#suggestions">Read suggestions</a><a href="#privacy">Privacy and limitations</a><a href="#method">Scoring method</a><b>RELATED</b><a href="/docs/">Documentation library</a><a href="/">Portfolio home</a></aside>
+<main class="article">
+<h2 id="overview">Overview</h2>
+<p>DocScore Lab is a browser-based documentation review tool. It checks the structure and content of Markdown, plain-text, and HTML documentation and highlights patterns that may affect readability, task completion, technical completeness, and machine parsing.</p>
+<p>Use the score to identify areas for editorial review. It is not a certification of documentation quality and does not replace subject-matter review, usability testing, or technical validation.</p>
+<div class="note"><b>What the tool does:</b> analyzes content structure and text using deterministic rules. It does not use a language model to invent feedback, and it does not send pasted or uploaded documentation to a server.</div>
+<h2 id="run-audit">Run an audit</h2>
+<ol>
+<li>Open <a href="/doc-score/">DocScore Lab</a>.</li>
+<li>Select <b>Paste</b> or <b>Upload files</b>.</li>
+<li>For pasted content, enter a document name and paste the complete Markdown, plain-text, or HTML page. For files, select one or more supported files.</li>
+<li>Select <b>Analyze documentation</b>.</li>
+<li>Review the overall score, category scores, priority suggestions, and document-level results.</li>
+<li>Expand <b>Show check-by-check results</b> to see which rules passed and which need attention.</li>
+<li>Select <b>Copy report</b> to copy a text summary of the audit.</li>
+</ol>
+<h3>Supported file types</h3>
+<table><thead><tr><th>Format</th><th>How the tool reads it</th></tr></thead><tbody>
+<tr><td>Markdown (<code>.md</code>, <code>.mdx</code>)</td><td>Checks heading, list, link, image, table, and fenced-code patterns.</td></tr>
+<tr><td>Plain text (<code>.txt</code>)</td><td>Checks text length, sentence patterns, and words. It cannot infer rich document structure unless it is represented in the text.</td></tr>
+<tr><td>HTML (<code>.html</code>, <code>.htm</code>)</td><td>Reads the document title, headings, links, image alt attributes, lists, tables, and code elements from the parsed page.</td></tr>
+</tbody></table>
+<p>The maximum file size is 3 MB per file. You can select multiple files to compare a set of documents.</p>
+<h2 id="portfolio-audit">Audit the portfolio samples</h2>
+<ol>
+<li>Open <a href="/doc-score/">DocScore Lab</a>.</li>
+<li>Select <b>Audit my portfolio docs</b>.</li>
+<li>Wait for the published sample pages to load and review the combined results.</li>
+</ol>
+<p>The portfolio audit checks the nine published documentation samples for the four browser mini projects, implementation notes, validation plan, and three code-based projects. The report calculates an average across the documents and shows their individual scores.</p>
+<h2 id="score">Understand the score</h2>
+<p>DocScore Lab reports an overall score from 0 to 100. It evaluates six categories.</p>
+<table><thead><tr><th>Category</th><th>Weight</th><th>What it checks</th></tr></thead><tbody>
+<tr><td>Structure and navigation</td><td>20%</td><td>Page title, one main heading, section headings, heading hierarchy, and scannable content.</td></tr>
+<tr><td>Task readiness</td><td>20%</td><td>Purpose and audience, actionable procedures, prerequisites, expected results, and recovery guidance.</td></tr>
+<tr><td>Technical completeness</td><td>20%</td><td>Examples, field definitions, version context, errors and constraints, and output descriptions.</td></tr>
+<tr><td>Clarity and readability</td><td>15%</td><td>Average sentence length, paragraph length, passive-voice patterns, and content depth.</td></tr>
+<tr><td>Links and references</td><td>15%</td><td>Reference links, descriptive link text, image alternative text, and reference context.</td></tr>
+<tr><td>Machine readability</td><td>10%</td><td>Readable text volume, structured sections, semantic lists or tables, and labeled code blocks.</td></tr>
+</tbody></table>
+<p>Each category is scored from 0 to 100. The overall score is the weighted average of the six category scores. Each individual rule is a pass or review result; the tool does not award partial points for a rule.</p>
+<h2 id="suggestions">Read the suggestions</h2>
+<p>The suggestions list groups failed checks across the uploaded documents. A suggestion that appears in several documents is shown higher in the list because it affects more of the set.</p>
+<ul>
+<li><b>Structure findings:</b> add a specific page title, use one H1, add useful H2 sections, and avoid skipped heading levels.</li>
+<li><b>Task-readiness findings:</b> state the purpose, list prerequisites, write ordered steps, describe the expected result, and explain common recovery paths.</li>
+<li><b>Technical findings:</b> add realistic examples, define parameters and data types, state supported versions, and document errors or constraints.</li>
+<li><b>Clarity findings:</b> split long sentences and paragraphs, and use active voice when it makes the actor clearer.</li>
+<li><b>Reference findings:</b> add useful related links, write descriptive link labels, and provide alt text for informative images.</li>
+<li><b>Machine-readability findings:</b> organize content with headings, lists, tables, and language-labeled code blocks.</li>
+</ul>
+<p>Review each suggestion in context. For example, passive voice is not always incorrect, and a long sentence can be appropriate when it expresses one precise condition. Do not change technically accurate content only to improve a score.</p>
+<h2 id="privacy">Privacy and limitations</h2>
+<ul>
+<li>Pasted text and uploaded files are processed in the browser. The tool does not transmit them to a portfolio backend.</li>
+<li>The portfolio audit fetches the published sample pages from the same website.</li>
+<li>The tool does not currently crawl arbitrary sites or test external link availability.</li>
+<li>It does not verify whether statements, commands, API responses, or code samples are factually correct.</li>
+<li>It does not evaluate real user task success, search analytics, security, accessibility conformance, page performance, agent retrieval, or API/MCP infrastructure.</li>
+<li>Sentence splitting, word counting, and passive-voice detection use simple heuristics. Abbreviations, code, tables, and unusual punctuation can affect results.</li>
+<li>A rule marked as passed means the pattern was found; it does not guarantee that the content is good.</li>
+</ul>
+<h2 id="method">Scoring method</h2>
+<p>Each category contains checks with fixed point values. The category score is calculated as the points earned divided by the total available points in that category, multiplied by 100. The category score is then multiplied by its weight to contribute to the overall score.</p>
+<p>For a multi-document audit, DocScore Lab calculates each document score separately and reports the arithmetic average across the selected documents. Repeated failed checks are grouped to help prioritize common issues.</p>
+<p>The method is intentionally visible so reviewers can understand why a document received a particular score. It is an independent, content-level interpretation inspired by public documentation scoring concepts; it does not reproduce Mintlify's proprietary scoring system.</p>
+<div class="article-footer"><a href="/doc-score/">Open the interactive tool ↗</a><a href="/docs/">Back to documentation library</a></div>
+</main>
+</div>
+<footer><div class="wrap">© 2026 Tanmayi R S · DocScore Lab</div></footer>
+</body></html>
