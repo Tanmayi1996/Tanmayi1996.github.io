@@ -72,7 +72,7 @@ export default {
     const origin = request.headers.get("Origin");
     const headers = corsHeaders(origin, allowedOrigin);
 
-    if (origin && origin !== allowedOrigin) {
+    if (origin !== allowedOrigin) {
       return reply("Origin is not allowed.", 403);
     }
 
@@ -82,6 +82,9 @@ export default {
 
     if (request.method !== "POST") {
       return reply("Use POST with a JSON body containing a url property.", 405, headers);
+    }
+    if (!(request.headers.get("Content-Type") || "").toLowerCase().includes("application/json")) {
+      return reply("Send the request as application/json.", 415, headers);
     }
 
     const allowedHosts = parseAllowedHosts(env.ALLOWED_HOSTS);
