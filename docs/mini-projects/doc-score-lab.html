@@ -45,7 +45,7 @@ header{background:#fff;border-bottom:1px solid #e2e8f1;padding:16px 0}header .wr
 <li>Select <b>Fetch page</b>. The tool requests the page directly from your browser.</li>
 <li>When the page loads, select <b>Analyze documentation</b>.</li>
 </ol>
-<p>The target site must allow cross-origin browser requests (CORS). Some documentation platforms block this by default. If the fetch fails, save the page as HTML or copy its content and use the upload or paste option. URL mode fetches one page only; it does not crawl a documentation site or follow links.</p>
+<p>The target site must allow cross-origin browser requests (CORS). Some documentation platforms block this by default. For those sites, deploy the optional <a href="/doc-score/cors-proxy/">restricted Cloudflare fetch proxy</a>, enter its HTTPS URL in the proxy field, and fetch again. The proxy can read only public pages from hostnames you explicitly allowlist; it cannot sign in or bypass access controls. If the site requires login or returns a JavaScript shell, save the page as HTML or copy its visible content and use the upload or paste option. URL mode fetches one page only; it does not crawl a documentation site or follow links.</p>
 <h2 id="portfolio-audit">Audit the portfolio samples</h2>
 <ol>
 <li>Open <a href="/doc-score/">DocScore Lab</a>.</li>
@@ -88,7 +88,7 @@ header{background:#fff;border-bottom:1px solid #e2e8f1;padding:16px 0}header .wr
 <h2 id="method">Scoring method</h2>
 <p>Each category contains checks with fixed point values. The category score is calculated as the points earned divided by the total available points in that category, multiplied by 100. The category score is then multiplied by its weight to contribute to the overall score.</p>
 <p>For a multi-document audit, DocScore Lab calculates each document score separately and reports the arithmetic average across the selected documents. Repeated failed checks are grouped to help prioritize common issues.</p>
-<p>The method is intentionally visible so reviewers can understand why a document received a particular score. It is an independent, content-level interpretation inspired by public documentation scoring concepts; it does not reproduce Mintlify's proprietary scoring system.</p>
+<p>The method is intentionally visible so reviewers can understand why a document received a particular score. It is a standalone, content-level scoring rubric created for this portfolio tool.</p>
 <div class="article-footer"><a href="/doc-score/">Open the interactive tool ↗</a><a href="/docs/">Back to documentation library</a></div>
 </main>
 </div>
