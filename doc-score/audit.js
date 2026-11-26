@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "/docs/mini-projects/validation-plan.html",
     "/docs/portfolio-projects/ai-release-notes-generator.html",
     "/docs/portfolio-projects/api-documentation-toolkit.html",
-    "/docs/portfolio-projects/documentation-quality-checker.html"
+    "/docs/portfolio-projects/documentation-quality-checker.html",
+    "/docs/mini-projects/doc-score-lab.html"
   ];
   var weights = [
     ["Structure & navigation",20],["Task readiness",20],["Technical completeness",20],
