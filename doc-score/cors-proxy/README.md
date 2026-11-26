@@ -52,3 +52,14 @@ A successful HTTP response does not guarantee that every dynamically loaded sect
 - The allowlist is a deliberate safety boundary. Do not remove it or accept arbitrary hosts from the browser.
 - This Worker does not store page content, but your Cloudflare account may have operational logs. Review your account's logging settings.
 - The proxy is optional. Paste and file upload remain available without it.
+
+
+## Important security note
+
+The exact-origin CORS check controls which browser pages can read the response; it is not user authentication because non-browser clients can forge an Origin header. The hostname allowlist is the primary outbound restriction. Keep it as narrow as possible, do not allow wildcard hosts, and configure Cloudflare rate limiting for the Worker to reduce automated abuse. Do not use this Worker for private or sensitive documents.
+
+The Worker intentionally rejects requests without the portfolio Origin header. Requests from scripts, command-line clients, or other websites are not supported.
+
+## If Salesforce still does not load
+
+A CORS proxy cannot bypass Salesforce authentication, SSO, access controls, bot challenges, or JavaScript-rendered content. If the Worker reports a redirect blocked error or the article body is missing, use a browser-saved HTML copy or paste the visible article content into DocScore Lab. Do not try to forward your Salesforce cookies or SSO credentials.
