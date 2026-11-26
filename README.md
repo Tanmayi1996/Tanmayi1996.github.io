@@ -2,12 +2,20 @@
 
 **Live website:** https://tanmayi1996.github.io/
 
-A personal portfolio for Senior Technical Writer Tanmayi R S, featuring:
-- Product and developer documentation experience
-- API documentation and docs-as-code skills
-- Interactive browser-based mini projects
-- AI-assisted documentation workflows
-- Selected portfolio project source links
+A personal portfolio for Senior Technical Writer Tanmayi R S, featuring product and developer documentation experience, API documentation, docs-as-code, interactive browser mini projects, and writing samples.
+
+## Documentation library
+
+**Browse the published documentation library:** https://tanmayi1996.github.io/docs/
+
+The documentation set includes:
+- User guides for the release note composer, API response explorer, documentation health analyzer, and Markdown table builder
+- Mini-project implementation notes
+- Functional and accessibility validation plan
+- Editorial conventions informed by public Microsoft technical-writing guidance
+- Project guides for the three code-based portfolio projects
+
+The documentation samples describe the published demos and their actual behavior. Product and API examples are fictional. The style guidance is an independent portfolio adaptation, not official Microsoft documentation.
 
 ## Featured projects
 
@@ -16,10 +24,10 @@ The runnable Python examples and source documentation are maintained in the [tec
 - API Documentation Toolkit
 - Documentation Quality Checker
 
-All example products and API data are fictional. The interactive mini demos run locally in the visitor's browser.
-
 ## Local preview
-Open `index.html` in any modern browser.
+
+Open `index.html` in a modern browser. Open `docs/index.html` for the documentation library.
 
 ## Deployment
+
 This site deploys automatically to GitHub Pages through the workflow in `.github/workflows/pages.yml` whenever changes are pushed to `main`.
