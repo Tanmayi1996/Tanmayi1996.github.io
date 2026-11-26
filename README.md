@@ -1,18 +1,25 @@
 # Tanmayi R S — Personal Portfolio
 
-This repository hosts the personal portfolio website for Tanmayi R S.
+**Live website:** https://tanmayi1996.github.io/
 
-## Live website
-https://tanmayi1996.github.io/
+A personal portfolio for Senior Technical Writer Tanmayi R S, featuring:
+- Product and developer documentation experience
+- API documentation and docs-as-code skills
+- Interactive browser-based mini projects
+- AI-assisted documentation workflows
+- Selected portfolio project source links
 
-## Featured work
-The portfolio highlights technical writing, API documentation, docs-as-code, and AI-assisted documentation workflows, with interactive mini demos.
+## Featured projects
 
-## Project source
-The working project repositories are linked from the portfolio and are maintained in the public `tanmayi-portfolio` repository.
+The runnable Python examples and source documentation are maintained in the [technical writing portfolio repository](https://github.com/Tanmayi1996/tanmayi-portfolio):
+- AI Release Notes Generator
+- API Documentation Toolkit
+- Documentation Quality Checker
+
+All example products and API data are fictional. The interactive mini demos run locally in the visitor's browser.
 
 ## Local preview
-Open `index.html` in a modern browser.
+Open `index.html` in any modern browser.
 
 ## Deployment
-GitHub Pages is deployed by the workflow in `.github/workflows/pages.yml`.
+This site deploys automatically to GitHub Pages through the workflow in `.github/workflows/pages.yml` whenever changes are pushed to `main`.
