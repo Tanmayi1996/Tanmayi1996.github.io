@@ -173,21 +173,50 @@ document.addEventListener("DOMContentLoaded", function () {
     $("filenames").textContent=chosenFiles.map(function (file) { return file.name; }).join(" · ")||"No files selected.";
   });
   $("fetch").addEventListener("click",async function () {
-    $("urlstatus").textContent="Fetching the page in your browser...";
+    $("urlstatus").textContent="Fetching documentation page...";
     $("urlstatus").classList.remove("error");
     fetchedDocument=null;
+    var proxyValue=$("proxyinput").value.trim();
     try {
       var address=new URL($("urlinput").value.trim());
-      if(address.protocol!=="http:"&&address.protocol!=="https:")throw new Error("Enter an HTTP or HTTPS URL.");
-      var response=await fetch(address.href,{mode:"cors",credentials:"omit"});
-      if(!response.ok)throw new Error("The website returned HTTP "+response.status+".");
+      if(address.protocol!=="http:"&&address.protocol!=="https:")throw new Error("Enter an HTTP or HTTPS documentation URL.");
+
+      var response;
+      if(proxyValue) {
+        var proxyAddress=new URL(proxyValue);
+        if(proxyAddress.protocol!=="https:")throw new Error("The fetch proxy URL must use HTTPS.");
+        response=await fetch(proxyAddress.href,{
+          method:"POST",
+          mode:"cors",
+          credentials:"omit",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({url:address.href})
+        });
+      } else {
+        response=await fetch(address.href,{mode:"cors",credentials:"omit"});
+      }
+
+      if(!response.ok) {
+        var failureText=await response.text().catch(function(){return "";});
+        throw new Error(failureText||("The request returned HTTP "+response.status+"."));
+      }
       var contentType=response.headers.get("content-type")||"";
-      if(!/(text\/html|text\/plain|application\/xhtml\+xml)/i.test(contentType))throw new Error("The URL must return HTML or plain text.");
+      if(!/(text\/html|text\/plain|application\/xhtml\+xml)/i.test(contentType)) {
+        throw new Error("The URL must return HTML or plain text.");
+      }
       var content=await response.text();
       fetchedDocument=parseDoc(content,address.hostname+address.pathname);
+      if(!fetchedDocument.text||fetchedDocument.text.length<100) {
+        throw new Error("The page loaded, but its readable article content is too short. It may require login or render content with JavaScript. Save the page as HTML or paste the article text instead.");
+      }
       $("urlstatus").textContent="Page loaded. Select Analyze documentation to run the audit.";
     } catch(error) {
-      $("urlstatus").textContent=error instanceof TypeError?"The website blocked browser access (often a CORS restriction). Paste or upload the content instead.":error.message;
+      var message=error instanceof TypeError
+        ? (proxyValue
+          ? "The fetch proxy could not be reached. Check its HTTPS URL, deployment, and CORS settings."
+          : "The website blocked browser access (often a CORS restriction). Deploy the optional proxy or paste/upload the content.")
+        : error.message;
+      $("urlstatus").textContent=message;
       $("urlstatus").classList.add("error");
     }
   });
@@ -236,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   $("reset").addEventListener("click",function () {
     chosenFiles=[];fetchedDocument=null;report="";$("doctext").value="";$("docname").value="My documentation sample";
-    $("upload").value="";$("filenames").textContent="No files selected.";$("urlinput").value="";$("urlstatus").textContent="";
+    $("upload").value="";$("filenames").textContent="No files selected.";$("urlinput").value="";$("proxyinput").value="";$("urlstatus").textContent="";
     $("status").textContent="Inputs cleared.";$("status").classList.remove("error");$("results").classList.remove("show");
     document.querySelector('.tab[data-mode="paste"]').click();
   });
