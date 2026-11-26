@@ -9,7 +9,8 @@ A personal portfolio for Senior Technical Writer Tanmayi R S, featuring product 
 **Browse the published documentation library:** https://tanmayi1996.github.io/docs/
 
 The documentation set includes:
-- User guides for the release note composer, API response explorer, documentation health analyzer, and Markdown table builder
+- User guides for the release note composer, API response explorer, documentation health analyzer, Markdown table builder, and DocScore Lab
+- DocScore Lab: scoring documentation quality with transparent editorial and technical-content checks
 - Mini-project implementation notes
 - Functional and accessibility validation plan
 - Editorial conventions informed by public Microsoft technical-writing guidance
@@ -26,7 +27,7 @@ The runnable Python examples and source documentation are maintained in the [tec
 
 ## Local preview
 
-Open `index.html` in a modern browser. Open `docs/index.html` for the documentation library.
+Open `index.html` in a modern browser. Open `docs/index.html` for the documentation library. The DocScore Lab tool is available at `doc-score/`.
 
 ## Deployment
 
