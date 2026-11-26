@@ -42,8 +42,9 @@ header{background:#fff;border-bottom:1px solid #e2e8f1;padding:16px 0}header .wr
 <ol>
 <li>Open <a href="/doc-score/">DocScore Lab</a> and select <b>Fetch URL</b>.</li>
 <li>Enter the public HTTP or HTTPS URL for the documentation page.</li>
-<li>Select <b>Fetch page</b>. The tool requests the page directly from your browser.</li>
-<li>When the page loads, select <b>Analyze documentation</b>.</li>
+<li>For a CORS-enabled site, select <b>Fetch page</b> and continue to step 6.</li>
+<li>For a site that blocks CORS, deploy the <a href="/doc-score/cors-proxy/">optional fetch proxy</a> and paste its HTTPS Worker URL into <b>Optional fetch proxy URL</b>.</li>
+<li>Select <b>Fetch page</b>. When the page loads, select <b>Analyze documentation</b>.</li>
 </ol>
 <p>The target site must allow cross-origin browser requests (CORS). Some documentation platforms block this by default. For those sites, deploy the optional <a href="/doc-score/cors-proxy/">restricted Cloudflare fetch proxy</a>, enter its HTTPS URL in the proxy field, and fetch again. The proxy can read only public pages from hostnames you explicitly allowlist; it cannot sign in or bypass access controls. If the site requires login or returns a JavaScript shell, save the page as HTML or copy its visible content and use the upload or paste option. URL mode fetches one page only; it does not crawl a documentation site or follow links.</p>
 <h2 id="portfolio-audit">Audit the portfolio samples</h2>
@@ -78,6 +79,8 @@ header{background:#fff;border-bottom:1px solid #e2e8f1;padding:16px 0}header .wr
 <h2 id="privacy">Privacy and limitations</h2>
 <ul>
 <li>Pasted text and uploaded files are processed in the browser. The tool does not transmit them to a portfolio backend.</li>
+<li>Direct URL imports are requested by your browser. When you configure the optional Cloudflare proxy, the requested public URL and its response pass through that Worker. The Worker does not forward Salesforce cookies or credentials and is configured for an explicit hostname allowlist.</li>
+<li>Do not use the proxy for confidential or internal-only documentation. Cloudflare may process request metadata as part of providing the Worker service.</li>
 <li>The portfolio audit fetches the published sample pages from the same website.</li>
 <li>The tool does not currently crawl arbitrary sites or test external link availability.</li>
 <li>It does not verify whether statements, commands, API responses, or code samples are factually correct.</li>
