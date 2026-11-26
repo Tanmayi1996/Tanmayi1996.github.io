@@ -27,7 +27,7 @@ The runnable Python examples and source documentation are maintained in the [tec
 
 ## Local preview
 
-Open `index.html` in a modern browser. Open `docs/index.html` for the documentation library. The DocScore Lab tool is available at `doc-score/`.
+Open `index.html` in a modern browser. Open `docs/index.html` for the documentation library. The DocScore Lab tool is available at `doc-score/`. Professional review packages are listed at `doc-score/professional-audit.html`.
 
 ## Deployment
 
