@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate DocScore JavaScript
         run: node --check doc-score/audit.js
+      - name: Validate DocScore fetch proxy
+        run: node --input-type=module --check < doc-score/cors-proxy/worker.js
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
